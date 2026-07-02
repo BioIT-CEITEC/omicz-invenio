@@ -206,8 +206,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# UV package management
-uv.lock
+
 
 #
 # Node.js gitignore

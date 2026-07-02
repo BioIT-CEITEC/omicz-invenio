@@ -1,0 +1,44 @@
+# Definition of metadata for omics. Please do not add ccmm model here,
+# add the ccmm_preset instead.
+Metadata:
+  properties:
+    title:
+      type: fulltext+keyword
+    languages:
+      type: array
+      items:
+        type: vocabulary
+        vocabulary-type: languages
+
+    # ── OmiCZ metadata extension ─────────────────────────────
+    # First draft — AI-assisted, not yet reviewed by OmiCZ team.
+    #
+    # Discovery / facet fields. Controlled value lists live in the
+    # OmiCZ deposition pipeline (API-only depositors), except
+    # sensitivity_class which drives access control and is pinned here
+    # so a bad value can't slip in and default a record to public.
+    omics_type:
+      type: array
+      items:
+        type: keyword
+    sensitivity_class:
+      type: keyword
+      enum: [sensitive, nonsensitive]
+
+    # Lineage fields (biological material → acquisition → data processing).
+    # Stored as opaque JSON; internal structure is governed by
+    # omicz_metadata_extension.schema.json, not Invenio.
+    # `dynamic-object` maps to OpenSearch `{type: object, dynamic: true}`
+    # so full-text search works over the JSON for MVP.
+    biological_material:
+      type: array
+      items:
+        type: dynamic-object
+    sequencing:
+      type: dynamic-object
+    mass_spectrometry:
+      type: dynamic-object
+    data_processing:
+      type: array
+      items:
+        type: dynamic-object
