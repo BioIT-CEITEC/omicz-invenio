@@ -1,0 +1,133 @@
+{
+  "metadata": {
+    "resource_type": {
+      "id": "c_ddb1"
+    },
+    "creators": [
+      {
+        "person_or_org": {
+          "name": "OmiCZ Consortium",
+          "type": "organizational"
+        }
+      },
+      {
+        "person_or_org": {
+          "family_name": "Nováková",
+          "given_name": "Eva",
+          "name": "Nováková, Eva",
+          "type": "personal"
+        }
+      }
+    ],
+    "title": "Whole-genome sequencing of a paired tumour/normal cohort (pilot, n=1)",
+    "publication_date": "2026",
+    "publisher": "OmiCZ",
+    "additional_descriptions": [
+      {
+        "lang": { "id": "ENG" },
+        "type": { "id": "abstract" },
+        "description": "Pilot whole-genome sequencing dataset from a single patient (tumour and matched normal). Illumina NovaSeq 6000, paired-end 150 bp. Aligned to GRCh38 with BWA-MEM2, variants called with GATK HaplotypeCaller. Intended as a demo record covering the CCMM core plus the OmiCZ metadata extension (biological material → sequencing → data processing lineage)."
+      }
+    ],
+    "subjects": [
+      { "subject": "Genomics" },
+      { "subject": "Whole-genome sequencing" },
+      { "subject": "Oncology" }
+    ],
+    "rights": [{ "id": "4-BY-NC" }],
+    "identifiers": [
+      {
+        "identifier": "10.5281/omicz.demo.0001",
+        "scheme": "doi"
+      }
+    ],
+    "dates": [
+      {
+        "date": "2026-05-14",
+        "type": { "id": "Created" }
+      }
+    ],
+    "languages": [{ "id": "ENG" }],
+
+    "omics_type": ["genomics"],
+    "sensitivity_class": "nonsensitive",
+
+    "biological_material": [
+      {
+        "material_type": "human",
+        "sample_id": "P001-T",
+        "tissue": "primary tumour",
+        "anatomical_site": "colon, sigmoid",
+        "disease": {
+          "name": "Colorectal adenocarcinoma",
+          "ncit_id": "C4349"
+        },
+        "sex": "female",
+        "age_at_collection": 62,
+        "consent": {
+          "study_id": "OMICZ-PILOT-2026",
+          "irb_approval": "2026/03/EK-114"
+        }
+      },
+      {
+        "material_type": "human",
+        "sample_id": "P001-N",
+        "tissue": "peripheral blood",
+        "relation_to": "P001-T",
+        "relation_type": "matched_normal"
+      }
+    ],
+
+    "sequencing": {
+      "platform": "Illumina NovaSeq 6000",
+      "library_strategy": "WGS",
+      "library_selection": "RANDOM",
+      "library_source": "GENOMIC",
+      "read_layout": "paired",
+      "read_length": 150,
+      "target_coverage_x": 30,
+      "library_prep_kit": "Illumina TruSeq DNA PCR-Free",
+      "run_date": "2026-04-22"
+    },
+
+    "data_processing": [
+      {
+        "step": 1,
+        "name": "Adapter trimming",
+        "software": "fastp",
+        "version": "0.23.4",
+        "parameters": { "--length_required": 50 }
+      },
+      {
+        "step": 2,
+        "name": "Alignment to reference",
+        "software": "bwa-mem2",
+        "version": "2.2.1",
+        "reference": {
+          "assembly": "GRCh38",
+          "source": "GATK Resource Bundle"
+        },
+        "input_type": "fastq",
+        "output_type": "bam"
+      },
+      {
+        "step": 3,
+        "name": "Duplicate marking",
+        "software": "GATK MarkDuplicates",
+        "version": "4.5.0.0"
+      },
+      {
+        "step": 4,
+        "name": "Germline variant calling",
+        "software": "GATK HaplotypeCaller",
+        "version": "4.5.0.0",
+        "workflow": "https://github.com/gatk-workflows/gatk4-germline-snps-indels",
+        "input_type": "bam",
+        "output_type": "vcf"
+      }
+    ]
+  },
+  "files": {
+    "enabled": true
+  }
+}
