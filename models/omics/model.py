@@ -3,12 +3,15 @@ Omics model
 """
 
 from __future__ import annotations
+from oarepo_requests.model.presets.requests import requests_preset
+from oarepo_workflows.model.presets import workflows_preset
 
 from ccmm_invenio.models import ccmm_production_preset_1_1_0
 from invenio_i18n import lazy_gettext as _
 from oarepo_model.api import model
 from oarepo_model.customizations import AddMetadataExport
 from oarepo_model.datatypes.registry import from_yaml
+from oarepo_communities.model.presets import communities_preset
 
 from .serializers import DataCiteJSONSerializer
 
@@ -18,7 +21,12 @@ omics_model = model(
     "omics",
     version="1.0.0",
     description="Omics model",
-    presets=[ccmm_production_preset_1_1_0],
+    presets=[
+        ccmm_production_preset_1_1_0,
+        workflows_preset,
+        requests_preset,
+        communities_preset,
+    ],
     types=[from_yaml("metadata.yaml", __file__)],
     metadata_type="Metadata",
     customizations=[
