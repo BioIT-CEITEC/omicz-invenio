@@ -1,0 +1,19 @@
+name: omicz-invenio
+version: 1.0.0
+repository_url: "https://github.com/BioIT-CEITEC/omicz-invenio"
+service_address: ""
+secure_cloud: false
+status: "in-development"
+description: "OmiCZ omics data repository — Invenio + CCMM with OmiCZ metadata extension."
+maintainers:
+  - Mirek Simek
+  - Ducica
+contact_email:
+  - simekmiroslav@cesnet.cz
+license: ""
+docs_url: ""
+dependencies: []
+tags:
+  - invenio
+language: []
+volumes: []
