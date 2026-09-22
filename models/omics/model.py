@@ -8,12 +8,13 @@ from oarepo_workflows.model.presets import workflows_preset
 
 from ccmm_invenio.models import ccmm_production_preset_1_1_0
 from invenio_i18n import lazy_gettext as _
+from oarepo_communities.model.presets import communities_preset
 from oarepo_model.api import model
 from oarepo_model.customizations import AddMetadataExport
 from oarepo_model.datatypes.registry import from_yaml
-from oarepo_communities.model.presets import communities_preset
 
 from .serializers import DataCiteJSONSerializer
+
 
 # TODO: Consider letting users add an image/icon for the model,
 # so that the deposit model selection page is more visually appealing.
