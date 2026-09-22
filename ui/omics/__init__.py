@@ -51,7 +51,7 @@ def init_menu(app):
     with app.app_context():
         current_menu.submenu("plus.create_omics").register(
             f"{ui_resource_config.blueprint_name}.deposit_create",
-            _("New Omics"),
+            _("New Omics Dataset"),
             order=1,
             visible_when=can_view_deposit_page,
         )
