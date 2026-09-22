@@ -4,10 +4,9 @@ repository_url: "https://github.com/BioIT-CEITEC/omicz-invenio"
 service_address: ""
 secure_cloud: false
 status: "in-development"
-description: "OmiCZ omics data repository — Invenio + CCMM with OmiCZ metadata extension."
+description: "OmiCZ omics data repository — Invenio + CCMM with OmiCZ metadata extension. Provided by CESNET z.s.p.o."
 maintainers:
   - Mirek Simek
-  - Ducica
 contact_email:
   - simekmiroslav@cesnet.cz
 license: ""
